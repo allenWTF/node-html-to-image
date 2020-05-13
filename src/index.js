@@ -15,7 +15,7 @@ module.exports = async function({
   if (!html) {
     throw Error('You must provide an html property.')
   }
-  const browser = await puppeteer.launch({ ...puppeteerArgs, headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox']});
+  const browser = await puppeteer.launch({ ...puppeteerArgs, headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage()
   if (content) {
     const template = handlebars.compile(html)
