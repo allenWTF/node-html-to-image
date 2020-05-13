@@ -6,7 +6,7 @@ module.exports = async function({
   output,
   type,
   content,
-  quality = 80, // only applicable for jpg
+  quality, // only applicable for jpg
   waitUntil = 'load',
   transparent = false,
   puppeteerArgs = {},
@@ -24,6 +24,7 @@ module.exports = async function({
   await page.setContent(html)
   await page.setViewport({width: 0, height: 0, deviceScaleFactor: 3});
   const element = await page.$('body')
+  await element.evaluate(() => document.body.style.background = "transparent");
   const buffer = await element.screenshot({ path: output, type, quality, omitBackground: true, encoding })
   await browser.close()
   return buffer
