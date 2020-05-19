@@ -22,7 +22,7 @@ module.exports = async function({
     html = template(content, { waitUntil })
   }
   await page.setContent(html)
-  await page.setViewport({width: 0, height: 0, deviceScaleFactor: 3});
+  await page.setViewport({width: 0, height: 0, deviceScaleFactor: 4});
   const element = await page.$('body')
   await element.evaluate(() => document.body.style.background = "transparent");
   const buffer = await element.screenshot({ path: output, type, quality, omitBackground: true, encoding })
